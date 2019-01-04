@@ -1,0 +1,18 @@
+logging:
+  path: /usr/local/jars/log/${spring.application.name}
+spring:
+  application:
+    name: weather-report
+#    redis auth
+  redis:
+    password: ******
+    host: ********
+#    热部署静态文件
+  thymeleaf:
+    cache: false
+    mode: HTML5
+    encoding: UTF-8
+    servlet:
+      content-type: text/html
+    prefix: classpath:/templates
+    suffix: .html

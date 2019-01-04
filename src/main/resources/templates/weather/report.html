@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>老董的天气预报</title>
+    <meta name="viewport" charset="Width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="stylesheet"
+          href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css"
+          crossorigin="anonymous">
+</head>
+<body>
+<div class="container" style="padding-top: 10px">
+    <div class="row">
+        <h3 th:text="${reportModel.title}">oldDong</h3>
+        <select id="selectCityId">
+            <option th:each="city : ${reportModel.cityList}"
+                    th:value="${city.cityId}" th:text="${city.cityName}"
+                    th:selected="${city.cityId eq reportModel.cityId}">Camery
+            </option>
+        </select>
+    </div>
+    <div class="row">
+        <h1 th:text="${reportModel.report.city}"></h1>
+    </div>
+    <div class="row">
+        <p>空气质量指数：<span th:text="${reportModel.report.aqi}"></span></p>
+    </div>
+    <div class="row">
+        <p>当前温度：<span th:text="${reportModel.report.wendu}"></span></p>
+    </div>
+    <div class="row">
+        <p>温馨提示：<span th:text="${reportModel.report.ganmao}"></span></p>
+    </div>
+    <div class="row">
+        <div class="card" th:each="forecast : ${reportModel.report.forecast}">
+            <div class="card-body">
+                <p class="card-text" th:text="${forecast.date}">周五</p>
+                <p class="card-text" th:text="${forecast.type}">多云</p>
+                <p class="card-text" th:text="${forecast.high}">28°C</p>
+                <p class="card-text" th:text="${forecast.low}">22°C</p>
+                <p class="card-text" th:text="${forecast.fengxiang}">东南风</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
+        integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
+        crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.3/umd/popper.min.js"
+        integrity="sha384-vFJXuSJphROIrBnz7yo7oB41mKfc8JzQZiCq4NCceLEaO4IHwicKwpJf9c9IpFgh"
+        crossorigin="anonymous"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/js/bootstrap.min.js"
+        integrity="sha384-alpBpkh1PFOepccYVYDB4do5UnbKysX5WZXm3XxPqe5iKTfUKjNkCk9SaVuEZflJ"
+        crossorigin="anonymous"></script>
+<script th:src="@{/js/report.js}"></script>
+</body>
+</html>
